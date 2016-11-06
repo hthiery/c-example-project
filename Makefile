@@ -38,12 +38,14 @@ MY_LDFLAGS := $(LDFLAGS)
 MY_CFLAGS += -DVERSION=\"$(VERSION)\"
 MY_CFLAGS += $(call cflags_for_lib,glib-2.0)
 MY_CFLAGS += $(call cflags_for_lib,zlib)
+MY_CFLAGS += -I/usr/include
 
 MY_CFLAGS += -I$(TOPDIR)/include
 MY_CFLAGS += -I$(TOPDIR)/src
 
 LIBS += $(call ldflags_for_lib,glib-2.0)
 LIBS += $(call ldflags_for_lib,zlib)
+LIBS += -L/usr/lib/x86_64-linux-gnu -larchive
 
 tests_CFLAGS := -Isrc/ -Wno-missing-field-initializers
 
