@@ -66,6 +66,20 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+          packages:
+            - g++-8
+            - libglib2.0-dev
+            - libarchive-dev
+            - libz-dev
+      env:
+        - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+
+    # works on Precise and Trusty
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.6
           packages:
             - clang-3.6
