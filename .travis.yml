@@ -12,9 +12,9 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-4.9
-			- libglib2.0-dev
-			- libarchive-dev
-			- libz-dev
+            - libglib2.0-dev
+            - libarchive-dev
+            - libz-dev
       env:
          - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
