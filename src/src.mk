@@ -4,7 +4,7 @@ INSTALL_TARGETS += install-libdll
 dll_SOURCES := $(wildcard src/*.c)
 dll_OBJECTS := $(addprefix $(o),$(dll_SOURCES:.c=.o))
 
-$(o)src/%.o: src/%.c
+$(o)src/%.o: $(dll_SOURCES)
 	$(call compile_tgt,dll)
 
 $(o)src/libdll.a: $(dll_OBJECTS)

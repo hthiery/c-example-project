@@ -32,20 +32,20 @@ ldflags_for_lib = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_LIBDIR) pkg-config --libs
 CFLAGS ?= -O2
 LDFLAGS ?=
 
+LIBS += $(call ldflags_for_lib,glib-2.0)
+CFLAGS += $(call cflags_for_lib,glib-2.0)
+
 MY_CFLAGS := $(CFLAGS)
-MY_LDFLAGS := $(LDFLAGS)
-
 MY_CFLAGS += -DVERSION=\"$(VERSION)\"
-MY_CFLAGS += $(call cflags_for_lib,glib-2.0)
-MY_CFLAGS += $(call cflags_for_lib,zlib)
 MY_CFLAGS += -I/usr/include
-
 MY_CFLAGS += -I$(TOPDIR)/include
 MY_CFLAGS += -I$(TOPDIR)/src
 
-LIBS += $(call ldflags_for_lib,glib-2.0)
-LIBS += $(call ldflags_for_lib,zlib)
-LIBS += -L/usr/lib/x86_64-linux-gnu -larchive
+MY_LDFLAGS := $(LDFLAGS)
+
+tar_CFLAGS += $(call cflags_for_lib,zlib)
+tar_LDFLAGS += -L/usr/lib/x86_64-linux-gnu -larchive
+tar_LIBS += $(call ldflags_for_lib,zlib)
 
 tests_CFLAGS := -Isrc/ -Wno-missing-field-initializers
 
